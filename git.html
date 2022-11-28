@@ -1,0 +1,43 @@
+오늘 배운 내용을 정리해보겠습니다.
+
+<script>
+function solution(cipher, code) {
+    var answer = '';
+   for( let i =0; i < cipher.length; i++){
+       if((i+1)%code === 0){ 
+          answer += cipher[i]
+       }
+   }
+    return answer;
+}
+</script>
+위는 프로그래머스 암호해독이라는 문제를 풀었던 해석입니다.
+
+
+문제 : cipher에 문자열이 적혀있고 code에는 숫자가 적혀있습니다. cipher라는 문자열에서 code의 배수번째 글자만 출력하시오
+cipher = "dfjardstddetckdaccccdegk"	 
+code = 4	
+result = "attack"
+ 
+
+정답 이전 제 코드는 아래와 같았습니다
+<script>
+    function solution(cipher, code) {
+        var answer = '';
+       for( let i =0; i < cipher.length; i++){
+           if(i%code === 0){ 
+              answer += cipher[i]
+           }
+       }
+        return answer;
+    }
+</script>
+위의 코드의 문제는 let i = 0 이라는 부분에서 i가 0부터 시작하면 code값을 ?라고 가정했을때 
+1. 0을 ? 로 나누면 나머지는 항상 0이기에 무조건 첫번째 시작점을 반환하는 문제가 있었습니다
+2. 문제의 조건이 index값으로 문자를 빼는것이 아닌 보이는 순서 그대로 빼는것이기에
+문자열의 첫번째는 0번째기 때문에 cipher[i]가 한 칸 뒤로 밀린 값들을 반환 했습니다.
+
+해결 방법:
+if(i%code === 0){  =>   if((i+1)%code === 0){ 
+    위와같이 코드를 작성하였습니다. i+1을 입력하고 그 값의 나머지를 0과 비교하기에 해결이 가능했습니다.
+    
