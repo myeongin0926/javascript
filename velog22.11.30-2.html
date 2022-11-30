@@ -1,0 +1,263 @@
+자바스크립트엔 글자 하나만 저장할 수 있는 별도의 자료형이 없습니다.
+텍스트 형식의 데이터는 길이에 상관없이 문자열 형태로 저장됩니다.
+
+자바스크립트에서 문자열은 페이지 인코딩 방식과 상관없이 항상 UTF-16 형식을 따릅니다.
+
+따옴표
+따옴표의 종류에는 작은따옴표나 큰따옴표,백틱으로 감쌀 수 있습니다.
+<script>
+let single = '작은따옴표';
+let double = "큰따옴표";
+
+let backticks = `백틱`;
+</script>
+작은따옴표와 큰따옴표는 기능상 차이가 없습니다.
+
+그런데 백틱엔 특별한 기능이 있습니다.
+표현식을 ${…}로 감싸고 이를 백틱으로 감싼 문자열 중간에 넣어주면 해당 표현식을
+문자열 중간에 쉽게 삽입할 수 있죠. 이런 방식을 템플릿 리터럴이라고 부릅니다.
+
+백틱을 사용하면 문자열을 여러 줄에 걸쳐 작성할 수도 있습니다.
+<script>
+let guestList = `손님:
+John
+Pete
+Mary
+`;
+
+  alert(guestList); //손님 리스트를 여러 줄에 걸쳐 작성
+</script>
+  작은따옴표나 큰따옴표를 사용하면 위와 같은 방식으로 여러 줄짜리 문자열을 만들 수 없습니다.
+
+백틱은 '템플릿 함수(template function)'에서도 사용됩니다.
+funcstring 같이 첫 번째 백틱 바로 앞에 함수 이름(func)을 써주면,
+이 함수는 백틱 안의 문자열 조각이나 표현식 평가 결과를 인수로 받아 자동으로 호출됩니다.
+이런 기능을 '태그드 템플릿(tagged template)'이라 부르는데, 태그드 템플릿을 사용하면
+사용자 지정 템플릿에 맞는 문자열을 쉽게 만들 수 있습니다.
+태그드 템플릿과 템플릿 함수에 대한 자세한 내용은 MDN 문서에서 확인해보세요.
+참고로 이 기능은 자주 사용되진 않습니다.
+
+특수 기호
+줄 바꿈 문자라고 불리는 특수기호 \n을 사용하면
+작은따옴표나 큰따옴표로도 여러 줄 문자열을 만들 수 있습니다.
+<script>
+let guestList = "손님:\n * John\n * Pete\n * Mary";
+
+alert(guestList); // 손님 리스트를 여러 줄에 걸쳐 작성함
+</script>
+모든 특수 문자는 '이스케이프 문자'라고도 불리는 역슬래시로 시작합니다.
+역슬래시는 문자열 내에 따옴표를 넣을 때도 사용할 수 있습니다.
+<script>
+alert( 'I\'m the Walrus!' ); // I'm the Walrus!
+</script>
+위 예시에서 살펴본 바와 같이 문자열 내의 따옴표엔 \를 꼭 붙여줘야 합니다.
+이렇게 하지 않으면 자바스크립트는 해당 따옴표가 문자열을 닫는 용도로 사용된 것이라 해석하기 때문입니다.
+
+이스케이프 문자는 문자열을 감쌀 때 사용한 따옴표와 동일한 따옴표에만 붙여주면 됩니다.
+문자열 내에서 좀 더 우아하게 따옴표를 사용하려면 아래와 같이
+따옴표 대신 백틱으로 문자열을 감싸주면 됩니다.
+<script>
+alert( `I'm the Walrus!` ); // I'm the Walrus!
+</script>
+문자열의 길이
+length 프로퍼티엔 문자열의 길이가 저장됩니다.
+<script>
+alert( `My\n`.length ); // 3
+</script>
+length는 프로퍼티입니다.
+str.length()가 아닌 str.length
+함수가 아닌 숫자가 저장되는 프로퍼티이기에 괄호를 붙이지 않습니다
+
+특정 글자에 접근하기
+문자열 내 특정 위치인 pos에 있는 글자에 접근하려면 [pos]같이 대괄호를 이용하거나 str.charAt(pos)라는 메서드를 호출하면 됩니다. 위치는 0부터 시작합니다.
+<script>
+let str = `Hello`;
+
+// 첫 번째 글자
+alert( str[0] ); // H
+alert( str.charAt(0) ); // H
+
+// 마지막 글자
+alert( str[str.length - 1] ); // o
+</script>
+근래에는 대괄호를 이용하는 방식을 사용합니다.
+charAt은 하위 호환성을 위해 남아있는 메서드라고 생각하시면 됩니다.
+
+두 접근 방식의 차이는 반환할 글자가 없을 때 드러납니다.
+접근하려는 위치에 글자가 없는 경우 []는 undefined를, charAt은 빈 문자열을 반환합니다.
+<script>
+let str = `Hello`;
+
+alert( str[1000] ); // undefined
+alert( str.charAt(1000) ); // '' (빈 문자열)
+</script>
+for..of를 사용하면 문자열을 구성하는 글자를 대상으로 반복 작업을 할 수 있습니다.
+<script>
+for (let char of "Hello") {
+  alert(char); // H,e,l,l,o (char는 순차적으로 H, e, l, l, o가 됩니다.)
+}
+</script>
+문자열의 불변성
+문자열은 수정할 수 없습니다.
+따라서 문자열의 중간 글자 하나를 바꾸려고 하면 에러가 발생합니다.
+<script>
+let str = 'Hi';
+
+str[0] = 'h'; // error
+alert( str[0] ); // 동작하지 않습니다.
+</script>
+이런 문제를 피하려면 완전히 새로운 문자열을 하나 만든 다음,
+이 문자열을 str에 할당하면 됩니다.
+<script>
+let str ='hi';
+
+str = 'h' + str[1]; //문자열 전체를 교체함
+
+alert( str ); //'hi'
+</script>
+대소문자 변경하기
+메소드 toLowerCase()와 toupperCase()를 이용하면 대소문자를 변경할 수 있습니다.
+<script>
+alert( 'Interface'.toUpperCase() ); // INTERFACE
+alert( 'Interface'.toLowerCase() ); // interface
+</script>
+글자 하나의 케이스만 변경하는 것도 가능합니다.
+<script>
+alert( 'Interface'[0].toLowerCase() ); // 'i'
+</script>
+부분 문자열 찾기
+문자열에서 부분 문자열을 찾는 방법은 여러 가지가 있습니다.
+
+str.indexOf
+첫 번째 방법은 str.indexOf(substr, pos) 메서드를 이용하는 것입니다.
+
+이 메서드는 문자열str의 pos에서부터 시작해, 부분 문자열 substr이 어디에 위치하는지를 찾아줍니다. 원하는 부분 문자열을 찾으면 위치를 반환하고 그렇지 않으면 -1을 반환합니다.
+<script>
+let str = 'Widget with id';
+
+alert( str.indexOf('Widget') ); // 0, str은 'Widget'으로 시작함
+alert( str.indexOf('widget') ); // -1, indexOf는 대·소문자를 따지므로 원하는 문자열을 찾지 못함
+
+alert( str.indexOf("id") ); // 1, "id"는 첫 번째 위치에서 발견됨 (Widget에서 id)
+</script>
+str.indexOf(substr, pos)의 두번째 매개변수 pos는 선택적으로 사용할 수 있습니다.
+pos의 값에 숫자를 입력하면 해당 위치부터 검색이 시작됩니다.
+
+문자열 내 부분 문자열 전체를 대상으로 무언가를 하고 싶다면
+반복문 안에 indexOf를 사용하면 됩니다.
+<script>
+let str = 'As sly as a fox, as strong as an ox';
+
+let target = 'as'; // as를 찾아봅시다.
+
+let pos = 0;
+while (true) {
+  let foundPos = str.indexOf(target, pos);
+  if (foundPos == -1) break;
+
+  alert( `위치: ${foundPos}` );
+  pos = foundPos + 1; // 다음 위치를 기준으로 검색을 이어갑니다.
+}
+</script>
+동일한 알고리즘을 사용해 코드를 줄이면 아래와 같습니다.
+<script>
+let str = "As sly as a fox, as strong as an ox";
+let target = "as";
+
+let pos = -1;
+while ((pos = str.indexOf(target, pos + 1)) != -1) {
+  alert( `위치: ${pos}` );
+}
+</script>
+if문의 조건식에 indexOf를 사용할 때에 주의점이 있습니다.
+아래와 같이 코드를 작성하면 원하는 결과를 얻을 수 없습니다.
+<script>
+let str = "Widget with id";
+
+if (str.indexOf("Widget")) {
+    alert("찾았다!"); // 의도한 대로 동작하지 않습니다.
+}
+</script>
+str.indexOf("Widget")은 0을 반환합니다 그런데
+if문에선 0을 false로 간주하므로 alert 창이 뜨지 않습니다.
+
+따라서 부분 문자열 여부를 검사하려면 아래와 같이 -1과 비교해야 합니다.
+<script>
+let str = "Widget with id";
+
+if (str.indexOf("Widget") != -1) {
+    alert("찾았다!"); // 의도한 대로 동작합니다.
+}
+</script>
+-1과 비교하는 이유는 indexOf() 메서드는 값을 찾지 못하면 -1이 반환되기에
+-1을 비교대상으로 비교하는 것입니다.
+
+str.lastIndexOf(substr, position)
+str.lastIndexOf(substr, position)는 indexOf와 유사한 기능을 하는 메서드 입니다.
+문자열 끝에서부터 부분 문자열을 찾아주는 메서드로서
+반환되는 부분 문자열 위치는 문자열 끝이 기준입니다.
+
+includes
+str에 부분 문자열 substr이 있는지에 따라 true나 false를 반환합니다.
+<script>
+alert( "Widget with id".includes("Widget") ); // true
+
+alert( "Hello".includes("Bye") ); // false
+</script>
+str.includes에도 str.indexOf처럼
+두 번째 인수를 넣어주면 해당 위치부터 부분 문자열을 검색합니다.
+
+부분 문자열 추출하기
+자바스크립트엔 부분 문자열 추출과 관련된 메서드 세가지가 있습니다.
+
+str.slice(start [,end])
+문자열의 start부터 end까지(end는 미포함 )를 반환합니다.
+<script>
+let str = "stringify";
+alert( str.slice(0, 5) ); // 'strin', 0번째부터 5번째 위치까지(5번째 위치의 글자는 포함하지 않음)
+alert( str.slice(0, 1) ); // 's', 0번째부터 1번째 위치까지(1번째 위치의 자는 포함하지 않음)
+</script>
+두 번째 인수가 생략된 경우엔, 명시한 위치부터 문자열 끝까지를 반환합니다.
+<script>
+let str = "stringify";
+alert( str.slice(2) ); // ringify, 2번째부터 끝까지
+</script>
+start와 end는 음수가 될 수도 있습니다.
+음수를 넘기면 문자열 끝에서부터 카운팅을 시작합니다.
+<script>
+let str = "stringify";
+
+// 끝에서 4번째부터 시작해 끝에서 1번째 위치까지
+alert( str.slice(-4, -1) ); // gif
+str.substring(start [, end])
+</script>
+start와 end 사이에 있는 문자열을 반환합니다.
+
+substring은 slice와 아주 유사하지만 start가 end보다 커도 괜찮다는 데 차이가 있습니다.
+<script>
+let str = "stringify";
+
+// 동일한 부분 문자열을 반환합니다.
+alert( str.substring(2, 6) ); // "ring"
+alert( str.substring(6, 2) ); // "ring"
+
+// slice를 사용하면 결과가 다릅니다.
+alert( str.slice(2, 6) ); // "ring" (같음)
+alert( str.slice(6, 2) ); // "" (빈 문자열)
+substring은 음수 인수를 허용하지 않습니다. 음수는 0으로 처리됩니다.
+</script>
+str.substr(start [, length])
+start부터 시작해 length개의 글자를 반환합니다.
+substr은 끝 위치 대신에 길이를 기준으로 문자열을 추출한다는 점에서
+substring과 slice와 차이가 있습니다.
+<script>
+let str = "stringify";
+alert( str.substr(2, 4) ); // ring, 두 번째부터 글자 네 개
+<script>
+첫번째 인수가 음수면 뒤에서부터 개수를 셉니다.
+<script>
+let str = "stringify";
+alert( str.substr(-4, 2) ); // gi, 끝에서 네 번째 위치부터 글자 두 개
+</script>
+어떤 메서드를 사용하는게 좋을까요?
+정답은 없지만 음수도 허용하고 유동성이 좋은 slice만 외우고 사용해도 좋습니다.
