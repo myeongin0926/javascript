@@ -1,0 +1,59 @@
+문자 color = 글자의 색상을 지정해주는 속성 기본값 = 검정 text-align = 문자의
+정렬 방식 기본값 = left right = 오른쪽 정렬 center = 가운데 정렬 text-decoration
+= 문자의 장식(선) 기본값 = none underline = 밑줄 overline = 윗줄 line-through =
+중앙 선 text-indent = 들여쓰기를 해주는 속성 음수 사용가능 기본값 = 0 단위 = px,
+em, rem등 단위로 지정 배경 background background-color = 배경의 색상을 지정
+기본값 = 투명 색상 지정 가능 background-image: url("경로") = 경로안에 주소를
+넣으면 이미지를 가져올 수 있음 기본값 = none(이미지 없음) url("경로") = 경로를
+사용해서 이미지를 넣어줌 background-size = 값을 넣어주면 사이즈에 맞게 사진을
+조정함 기본값 = auto (이미지의 실제 크기) 단위 px, em, rem = 단위로 이미지 크기
+조정 가능 cover = 비율을 유지 요소의 더 넓은 너비에 맞춤 contain = 비율을 유지
+요소의 더 짧은 너비에 맞춤 background-repeat = 이미지가 반복되는걸 설정하는것
+기본값 = repeat = 이미지를 수직, 수평 반복 repeat-x = 이미지를 수평 반복
+repeat-y = 이미지를 수직 반복 no-repeat = 반복하지 않음 이미지를 한 번만 출력
+background-position = 배경 요소의 포지션을 정해줄 수 있음 기본값 = 0~100% 사이
+방향 top, bottom, left, right, center = 방향 지정 가능 단위 px, em, rem = 단위로
+위치 조정 가능 background-attachment = 요소의 배경 이미지 스크롤 특성 기본값 =
+scroll = 이미지가 요소를 따라서 같이 스크롤 fixed = 이미지가 뷰포트에 고정,
+스크롤이 안됨 요소 배치 position position = 요소의 위치 지정 기준 기본값 =
+static = 기준 없음 relative = 요소 자신 을 기준 absolute = 위치 상 부모 요소를
+기준 fixed = 뷰포트를 기준 스크롤을 하더라도 화면에 고정되어 있음 sticky =
+스크롤 영역 기준 position과 같이 사용하는 속성들 top, bottom, left, right,
+z-index = 양수 음수 사용 가능 요소 쌓임 순서 1. position값이 있는 경우 더 위에
+쌓임 static 제외 2. 1번 조건이 같을 경우 z-index 순서대로 쌓임 3. 1,2 번 조건이
+같을 경우 html 상에 나중에 작성 된 요소가 위에 쌓임 position값이 없을 경우
+z-index를 비교하지 않음 z-index 기본값 = 0 = 숫자를 입력해 z-index값을 줌
+z-index 값이 더 클수록 위에 쌓임 position 사용시 자동 display 변환 position =
+absolute, fixed = 이 두가지 position속성은 display: block; 속성을 사용한 것과
+같이 변한다 flex 정렬 flex container를 만들어줌 (요소 수평 정렬) display : flex
+= 블록 요소와 같이 flex contanier 정의 display : inline-flex = 인라인 요소와
+같이 flex contanier 정의 flex container 요소 flex-direction = 주 축을 설정
+기본값 = row = 행축 (좌 - 우) row-reverse = 행촉 (우 - 좌) column = 행축 (위 -
+아래) column-reverse = 행축 (아래 - 위) flex-wrap = flex items들의 묶음(줄바꿈)
+여부 flex container는 요소들을 한 줄에 묶으려고 시도하기에 flex item들의 속성이
+변경될 수 있기에 원치 않을경우 wrap를 사용하여 줄바꿈 한다 기본값 nowrap =
+묶음(줄바꿈) 없음 wrap = 여러 줄로 묶음 justify-content = 주 축의 정렬 방법
+기본값 = flex-start = flex items를 시작점으로 정렬 flex-end = flex items 를
+끝점으로 정렬 center = flex items 를 가운데 정렬 align-content = 교차 축 여러 줄
+정렬 방법 flex item이 두 줄 이상이어야 하고, 빈 공간이 있어야만 정렬을 할 수
+있다. 기본값 = stretch = flex items 를 시작점으로 정렬 flex-start = flex items
+를 시작점으로 정렬 flex-end = flex items를 끝점으로 정렬 center = flex items를
+가운데 정렬 align-items = 교차축의 한 줄 정렬 방법 기본값 = stretch = flex items
+를 교차 축으로 늘림 flex-start = flex items 를 각 줄의 시작점으로 정렬 flex-end
+= flex items 를 각 줄의 끝점으로 정렬 center = flex items 를 각 줄의 가운데 정렬
+flex items 요소 order = flex item 의 순서를 변경 기본값 = 0 = 순서 없음 숫자 =
+숫자가 작을수록 앞에 위치 flex-grow = flex item의 증가 너비 비율 기본값= 0= 증가
+없음숫자` = 증가 비율 flex-shrink = flex item 의 감소 너비 비율 기본값 = 1 =
+flex container 너비에 따라 감소 비율 적용 숫자 = 감소 비율 flex-basis = flex
+item의 공간 배분 전 기본 너비 기본값 = auto = 요소의 너비 content 너비 단위 =
+px, em, rem 등 단위로 지정 전환 transition transition: 속성명 지속시간
+타이밍함수 대기시간; = 요소의 전환 (시작과 끝) 효과를 지정하는 단축 속성
+단축형으로 작성할 때에 지속시간은 필수 포함 속성 transition-property = 전환
+효과를 사용할 속성 이름을 지정 기본값 = all = 모든 속성에 적용 속성이름 = 전환
+효과를 사용할 속성 이름 명시 transition-duration = 전환 효과의 지속시간을 지정
+기본값 = 0s = 전환효과 없음 시간 = 지속 시간(s)을 지정
+transition-timing-function = 전환 효과의 타이밍 함수를 지정 ease = 느리게 -
+빠르게 - 느리게 linear = 일정하게 ease-in = 느리게 - 빠르게 ease-out = 빠르게 -
+느리게 ease-in-out = 느리게 - 빠르게 - 느리게 transition-delay = 전환 효과가 몇
+초 뒤에 시작할지 대기시간을 지정 기본값 = 0s = 대기시간 없음 시간 = 대기시간s을
+지정 변환
