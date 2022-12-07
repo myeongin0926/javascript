@@ -1,0 +1,83 @@
+javascript 선행 학습 표기법 dash-case : - 대시를 사용하여 표기 하는 법 html, css
+hello-my-name-is-myeongin = 단어 사이사이에 띄어쓰기 대신 대시 를 사용하여
+문장을 만들어 내는 방법 snake_case : _ 언더바를 사용하여 표기 하는 법 html, css
+hello-my-name-is-myeongin = 단어 사이사이에 띄어쓰기 대신 언더바 를 사용하여
+문장을 만들어 내는 방법 camelCase : 첫번째 단어를 제외하고 두번째 단어부터
+대문자로 단어를 시작 js helloMyNameIsMyeongin = 두번째 단어부터 첫 글자를
+대문자로 작성 PascalCase : 첫번째 단어부터 대문자로 단어를 시작 js
+HelloMyNameIsMyeongin = 첫번째 단어부터 첫 글자를 대문자로 작성 Zero-based
+Numbering = js는 특수한 경우를 제외하고 0부터 숫자를 시작합니다.' 예약어 =
+의미가 이미 지정되어 있어 변수명으로 사용할 수 없음 DOM API = js에서 html을
+제어하는 명령들 DOM = html 내용들을 의미 API = 여러가지 명령들 html 요소 1개
+검색/찾기 const boxEl = document.querySelector('.box') html 요소에 적용할 수
+있는 메소드 boxEl.addEventListener(); 2개의 인수 를 추가 가능
+boxEl.addEventListener(1, 2); 1번 인수 - 이벤트(Event, 상황)
+boxEl.addEventListener('click', 2); 2번 인수 - 핸들러(Handler, 실행 할 함수)
+boxEl.addEventListener('click', function () { console.log('click~') }); 요소의
+클래스 정보를 변경 boxEl.classList.add('active'); // boxEl에다가 active라는
+클래스를 할당(add) let isContains = boxEl.classList.contains('active') //
+boxEl에 contains이라는 속성을 활용하여 active가 존재하는 확인 //true
+boxEl.classList.remove('active') // boxEl에 있는 active라는 클래스를
+제거(remove) let isContains = boxEl.classList.contains('active') // active를
+remove로 지웠기 때문에 false 출력 getter = 값을 얻는 용도
+console.log(boxEl.textContent); // box!! = 컨텐츠 내용을 반환 Setter = 값을
+지정하는 용도 boxEl.textContent = 'BOX'; // 값을 지정
+console.log(boxEl.textContent); // 지정된 값 BOX반환 스타벅스 예제 favicon.ico =
+title 옆에 이미지 추가 오픈그래프 = 공유되었을때 어떻게 보일지 설정
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Starbucks" />
+<meta property="og:title" content="Starbucks Coffee Korea" />
+<meta
+  property="og:description"
+  content="스타벅스는 세계에서 가장 큰 다국적 커피 전문점으로, 64개국에서 총 23,187개의 매점을 운영하고 있습니다."
+/>
+<meta property="og:image" content="./images/starbucks_seo.jpg" />
+<meta property="og:url" content="https://starbucks.co.kr" />
+og:type: 페이지의 유형(예, website, video.movie) og:site_name: 대전 사이트의
+이름 og:title: 페이지의 이름(제목) og:description: 페이지의 설명 og:image:
+페이지의 대표 이미지 주소(URL) og:url: 페이지 주소(URL) 트위터 카드 = 트위터로
+공유될 때 우선적으로 활용되는 정보
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:site" content="Starbucks" />
+<meta property="twitter:title" content="Starbucks Coffee Korea" />
+<meta
+  property="twitter:description"
+  content="스타벅스는 세계에서 가장 큰 다국적 커피 전문점으로, 64개국에서 총 23,187개의 매점을 운영하고 있습니다."
+/>
+<meta property="twitter:image" content="./images/starbucks_seo.jpg" />
+<meta property="twitter:url" content="https://starbucks.co.kr" />
+twitter:card: 페이지(카드)의 유형(예: summary, player) twitter:site: 대전
+사이트의 이름 twitter:title: 페이지의 이름(제목) twitter:description: 페이지의
+설명 twitter:image: 페이지의 대표 이미지 주소(URL) twitter:url: 페이지 주소(URL)
+goole fonts = 모든 브라우저에서 같은 글자로 설정 goole fonts에 접속하여 원하는
+글씨체를 선택하고 원하는 사이즈 선택 link를 복사하여 html 파일에 적용 font-style
+사용하여 글씨체 설정 저작권 항상 확인하기 google material icons = 구글에서
+제공하는 아이콘 매번 모든 시안이 다 있을 수는 없기에 구글에서 제공하는 아이콘을
+사용
+
+<header>
+  = 사이트의 header부분이라는것을 명시 별 다른 기능은 없고 단지 header라는 것만
+  명시 사이트 시작단계 font 지정 (크로스 브라우징) body 글자속성 지정 (크로스
+  브라우징) font-size=16px, font-weight=400, line-height=1.4 공유카드 설정 css
+  파일 연결 lang 값 변경 title 값 변경 img의 display값을 block으로 바꿔준다
+  base-line 때문에 absolute를 사용하여 위치를 배정할때 상하를 가운데에 배치하고
+  싶을 때 맞추고자 하는 기준점에 position값이 있어야함 높이를 맞추려면 높이값
+  height값이 있어야함 position: absolute; height: 100px; top: 0; bottom: 0;
+  margin: 0 auto; // 맞추고자 하는 요소 기준점에 position값이 있어야 함 좌우를
+  가운데에 배치하고 싶을 때 1. 맞추고자 하는 기준점에 position값이 있어야함 2.
+  높이를 맞추려면 높이값 width값이 있어야함 position: absolute; width: 100px;
+  left: 0; right: 0; margin: 0 auto; // 맞추고자 하는 요소 기준점에 position값이
+  있어야 함 a태그를 사용하는데 링크가 아직 준비되지 않았을때
+  <a href="javascript:void(0)">
+    // a태그는 그대로 작동하나 아무런 작동도 하지않는 속성 구분선 만들기 a|b|c
+    구분선은 가상 선택자 ::before를 사용해서 만들 수 있다. .abc::before {
+    content: ""; width: 1px; height: 12px; background-color: #000; position:
+    absolute; top: 0; bottom: 0; margin: auto; }; content의 값은 비어있더라도
+    적어주어야 한다 위와 같이 작성하게 되면 |a|b|c와 같이 사이사이만 아닌 맨
+    앞에도 나타나게 된다 이럴땐 :first-child::before를 사용해서 맨 앞의 요소를
+    지워주면 된다 .abc:first-child::before { display: none; //화면에서 없애기
+    때문에 none속성을 사용한다 input 요소의 focus시 테두리 없애기 outline 속성을
+    활용해서 none를 입력하면 없어짐</a
+  >
+</header>
